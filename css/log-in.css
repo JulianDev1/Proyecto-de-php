@@ -11,7 +11,7 @@
     font-display: swap;
 }
 body{
-    background-image: url(../images/fondo_login.jpg);
+    background-image: url(../layout/images/fondo_login.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@ body::before {
 .form-content{
     display: flex;
     height: 40%;
-    width: 30%;
+    width: 25%;
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
     border-radius: 10px;
@@ -106,9 +106,10 @@ input{
     cursor: pointer;
     display: block;
     margin-bottom: 20px;
-
 }
 @media (max-width: 700px) {
-
-
+    .form-content{
+        height: 50%;
+        width: 70%;
+    }
 }

@@ -17,3 +17,237 @@ body {
 }
 
 
+
+/*! ----- Nav Bar ----- */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: black;
+    width: 100%;
+    font-size: 1.3em;
+    z-index: 10;
+
+}
+
+.nav-container img {
+    width: 150px;
+    height: auto;
+    margin-left: 5%;
+}
+
+.nav-options {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-options a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.nav-options a:hover {
+    color: red;
+    transition: color 0.3s ease;
+}
+
+
+.nav-options li {
+    padding: 10px;
+    list-style: none;
+}
+
+.nav-container button {
+    background-color: red;
+    text-align: center;
+    margin-right: 5%;
+    width: auto;
+    font-size: 3vh;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Chinese Rocks Rg', sans-serif;
+}
+
+.nav-container button:hover {
+    background: black;
+    color: red;
+    transition: color 0.4s ease, background 0.4s ease;
+}
+
+.nav-btn {
+    display: none;
+    cursor: pointer;
+}
+
+/** Drop Down */
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+    margin-top: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+
+#characters {
+    position: relative;
+}
+
+.nav-options #characters:hover .nav-dropdown {
+    display: block;
+}
+
+@media (max-width: 700px) {
+
+/** ----- Nav Bar ----- */
+    .nav-options {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: black;
+        width: 50%;
+        height: 100%;
+        opacity: 0.9;
+        padding: 30px;
+        transform: translateX(-500px);
+        transition: transform 0.5s ease-in-out;
+        z-index: 1000;
+    }
+    .nav-options.show{
+        transform: translateX(-20px);
+    }
+    .nav-btn {
+        display: block;
+    }
+
+}
+
+/*! ----- Banner ----- */
+.banner-container {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 100%), url('../layout/images/arthur-banner.jpg');
+    background-size: cover;
+    background-position: top;
+}
+
+
+.banner-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 1;
+    align-items: center;
+    gap: 20px;
+    padding: 50px;
+    backdrop-filter: blur(1px) brightness(0.5);
+}
+
+
+.banner-content h1 {
+    font-size: 10vw;
+    text-shadow: 5px 4px 1px black;
+    text-align: center;
+}
+
+.banner-content p {
+    font-size: 1.5em;
+    text-shadow: 2px 2px 1px black;
+    max-width: 700px;
+    text-align: center;
+
+}
+
+@media (max-width: 700px) {
+
+    .banner-container {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+/*! ----- Image Gallery ----- */
+.gallery-container{
+    display: flex;
+
+}
+
+.image-gallery {
+    margin: auto;
+    position: relative;
+    display: flex;
+    width: 90%;
+    height: 430px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-gallery img {
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    transition: .5s ease;
+    box-shadow: 1px 1px 5px 1px black;
+}
+
+.image-gallery img:hover {
+    cursor: crosshair;
+    width: 50%;
+    filter: contrast(120%);
+
+}
+
+
+
+@media (max-width: 700px) {
+
+
+    /** ----- Image Gallery ----- */
+    .image-gallery {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+
+    .image-gallery img {
+        width: initial;
+        height: 0px;
+        flex-grow: 1;
+        object-fit: cover;
+        transition: .5s ease;
+        box-shadow: 1px 1px 5px 1px black;
+    }
+
+    .image-gallery img:hover {
+        cursor: crosshair;
+        width: initial;
+        height: 50%;
+        filter: contrast(120%);
+
+    }
+
+
+}
+
+/*! Footer **/
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 20px;
+    background-color: rgba(207, 5, 19, 0.3);
+    z-index: 100;
+
+}
+
+.footer-container footer {
+    text-align: center;
+    max-width: 90%;
+}
