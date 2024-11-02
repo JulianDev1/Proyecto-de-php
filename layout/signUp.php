@@ -1,4 +1,4 @@
-<?php
+<?php 
     $ruta = basename(__DIR__);
 ?>
 <!DOCTYPE html>
@@ -15,22 +15,24 @@
     <!-- FAVICON -->
     <link rel="shortcut icon" href="<?php echo $ruta == "layout" ? "images/rdr2-ico.png" : "layout/images/rdr2-ico.png";?>" type="image/x-icon">
     <!-- STYLES -->
-    <link rel="stylesheet" href="../css/log-in.css">
+    <link rel="stylesheet" href="../css/sign-up.css">
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body>
     <div class="form-container">
-        <h1>Log in</h1>
+        <h1>Sign Up</h1>
         <div class="form-content">
             <form action="../Controller/userController.php" method="POST">
-            <input type="hidden" name="action" value="login">
+            <input type="hidden" name="action" value="registrar">
                 <div class="form-datos">
+                    <label for="txtName">User Name:</label>
+                    <input name="txtName" type="text" required>
                     <label for="txtEmail">E - Mail:</label>
-                    <input name="txtEmail" type="email">
+                    <input name="txtEmail" type="email" required>
                     <label for="txtPassword">Password:</label>
-                    <input name="txtPassword" type="password">
+                    <input name="txtPassword" type="password" required>
                 </div>
                 <button type="submit">Send</button>
             </form>

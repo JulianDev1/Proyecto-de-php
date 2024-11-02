@@ -7,12 +7,15 @@
             <li><a href="<?php echo $ruta == "layout" ? "cities.php" : "layout/cities.php";?>">Cities</a></li>
             <li><a href="<?php echo $ruta == "layout" ? "characters.php" : "layout/characters.php";?>">Characters</a></li>
         </ul>
-        <button onclick="<?php echo $ruta != "layout" ? "window.location.href='layout/logIn.php'" : "window.location.href='logIn.php'";?>">Login!</button>
+        <div class="botones">
+
+            <button onclick="<?php echo $ruta != "layout" ? "window.location.href='layout/logIn.php'" : "window.location.href='logIn.php'";?>">Log In!</button>
+            <button onclick="<?php echo $ruta != "layout" ? "window.location.href='layout/signUp.php'" : "window.location.href='signUp.php'";?>">Sign Up!</button>
+
+        </div>
 
         <div class="nav-btn">
             <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
         </div>
     </nav>
 </header>
-
-<!-- <?php echo $ruta != "layout" ? "window.location.href='layout/logIn.php'" : "window.location.href='logIn.php'";?> -->
