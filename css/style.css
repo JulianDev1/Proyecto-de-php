@@ -10,6 +10,7 @@
     src: url(../fonts/chinese-rocks-rg.otf);
     font-display: swap;
 }
+
 body {
     color: white;
     font-optical-sizing: auto;
@@ -75,11 +76,18 @@ body {
     background: black;
     color: red;
     transition: color 0.4s ease, background 0.4s ease;
+    border: red 1px solid;
 }
 
 .nav-btn {
     display: none;
     cursor: pointer;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    width: 12rem;
 }
 
 /** Drop Down */
@@ -95,17 +103,9 @@ body {
     text-align: center;
 }
 
-#characters {
-    position: relative;
-}
-
-.nav-options #characters:hover .nav-dropdown {
-    display: block;
-}
-
 @media (max-width: 700px) {
 
-/** ----- Nav Bar ----- */
+    /** ----- Nav Bar ----- */
     .nav-options {
         display: block;
         position: absolute;
@@ -120,13 +120,24 @@ body {
         transition: transform 0.5s ease-in-out;
         z-index: 1000;
     }
-    .nav-options.show{
+
+    .nav-options.show {
         transform: translateX(-20px);
     }
+
     .nav-btn {
         display: block;
     }
 
+    .nav-container button {
+        font-size: 20px;
+    }
+    .botones{
+        margin-left: 3px;
+
+
+    }
+ 
 }
 
 /*! ----- Banner ----- */
@@ -172,7 +183,7 @@ body {
 }
 
 /*! ----- Image Gallery ----- */
-.gallery-container{
+.gallery-container {
     display: flex;
 
 }

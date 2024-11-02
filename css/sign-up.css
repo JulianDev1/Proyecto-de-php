@@ -10,14 +10,12 @@
     src: url(../fonts/chinese-rocks-rg.otf);
     font-display: swap;
 }
-
-body {
-    background-image: url(../layout/images/fondo_login.jpg);
+body{
+    background-image: url(../layout/images/sign-up.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-
 body::before {
     content: '';
     position: absolute;
@@ -29,13 +27,11 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(5px) brightness(0.7);
-    /* Aplica el blur y disminuye el brillo */
-    z-index: -1;
-    /* Coloca el pseudo-elemento detrás del contenido del body */
+    filter: blur(5px) brightness(0.7); /* Aplica el blur y disminuye el brillo */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido del body */
 }
 
-.form-container {
+.form-container{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -43,9 +39,9 @@ body::before {
     height: 100vh;
 }
 
-.form-content {
+.form-content{
     display: flex;
-    height: 40%;
+    height: 50%;
     width: 25%;
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
@@ -55,8 +51,7 @@ body::before {
     align-items: center;
 
 }
-
-.form-content form {
+.form-content form{
     /* display: flex; */
     /* flex-direction: column; */
     align-items: center;
@@ -64,14 +59,14 @@ body::before {
     align-content: space-between;
 }
 
-.form-datos {
+.form-datos{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 
-h1 {
+h1{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     color: white;
     margin: 20px;
@@ -89,11 +84,10 @@ button {
     border-radius: 5px;
     cursor: pointer;
     align-content: center;
-    margin: auto;
+    margin: auto; 
     font-size: 20px;
 
 }
-
 button:hover {
     background: none;
     color: red;
@@ -101,7 +95,7 @@ button:hover {
 }
 
 
-input {
+input{
     justify-content: center;
     padding: 10px 20px;
     color: white;
@@ -114,14 +108,13 @@ input {
 
 }
 
-
-input:focus {
+input:focus{
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
 @media (max-width: 700px) {
-    .form-content {
+    .form-content{
         height: 50%;
         width: 70%;
     }
