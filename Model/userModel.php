@@ -8,6 +8,7 @@ class UserModel
     private $nombre;
     private $correo;
     private $contraseña;
+    private $rol;
 
     //conexion a la base de datos
     private $db;
@@ -59,6 +60,15 @@ class UserModel
         $this->contraseña = $this->db->real_escape_string($contraseña);
     }
 
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
+    }
+    public function getRol()
+    {
+        return $this->rol;
+    }
+
     public function registrarUsuario()
     {
         $contraseña = password_hash($this->getContraseña(), PASSWORD_BCRYPT);
@@ -73,6 +83,7 @@ class UserModel
             // El usuario ya existe, no se puede registrar
             return false;
         }
+
         $guardar = $this->db->query($sql);
         $result = false;
 
@@ -82,17 +93,70 @@ class UserModel
         return $result;
     }
 
-    public function LoguearUsuario() {
+    //!loguear usuario
+    public function loguearUsuario()
+    {
 
         $sql = "SELECT * FROM usuarios WHERE email = '{$this->getCorreo()}'";
         $login = $this->db->query($sql);
-        if($login && $login->num_rows > 0 ){
+        if ($login && $login->num_rows > 0) {
             $contraseña = $login->fetch_object()->contraseña;
             $verify = password_verify($this->getContraseña(), $contraseña);
-            if($verify){
+            if ($verify) {
                 return true;
             }
         }
         return false;
+    }
+
+
+    public function obtenerNombrePorCorreo($correo)
+    {
+        $correo = $this->db->real_escape_string($correo);
+        $sql = "SELECT nombre FROM usuarios WHERE email = '{$correo}'";
+        $result = $this->db->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_object()->nombre;
+        }
+        return;
+    }
+
+    public function obtenerRolPorCorreo($correo)
+    {
+        $query = "SELECT rol FROM usuarios WHERE email = '{$correo}'";
+        $result = $this->db->query($query);
+
+        if ($result && $result->num_rows > 0) {
+
+            return  $result->fetch_object()->rol;
+        }
+        return;
+    }
+
+    public function obtenerTodosLosUsuarios()
+    {
+        $sql = "SELECT id, nombre, email, rol FROM usuarios";
+        $result = $this->db->query($sql);
+
+        $usuarios = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $usuarios[] = $row;
+            }
+        }
+        return $usuarios;
+    }
+
+    public function actualizarUsuario()
+    {
+        $sql = "UPDATE usuarios SET nombre = '{$this->getNombre()}', email = '{$this->getCorreo()}', rol = '{$this->rol}' WHERE id = '{$this->getId()}'";
+        return $this->db->query($sql);
+    }
+
+    public function eliminarUsuario()
+    {
+        $sql = "DELETE FROM usuarios WHERE id = '{$this->getId()}'";
+        return $this->db->query($sql);
     }
 }

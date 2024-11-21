@@ -19,6 +19,7 @@
 <body>
 <?php 
 $ruta = basename(__DIR__);
+session_start();
 include '../layout/header.php'; 
 ?>
 

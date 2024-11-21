@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: red;
+}
+
+.dashboard-container {
+    width: 100%;
+    padding: 20px;
+}
+th{
+    color: black;
+    font-size: larger;
+
+}
+button {
+    background-color: blue;
+    text-align: center;
+    width: auto;
+    font-size: 3vh;
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Chinese Rocks Rg', sans-serif;
+}
+button:hover {
+    background: black;
+    color: red;
+    transition: color 0.4s ease, background 0.4s ease;
+    border: red 1px solid;
+}
+h1{
+    text-align: center;
+}

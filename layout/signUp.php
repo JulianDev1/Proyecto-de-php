@@ -1,5 +1,6 @@
 <?php 
     $ruta = basename(__DIR__);
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="es-ES">
@@ -17,6 +18,8 @@
     <!-- STYLES -->
     <link rel="stylesheet" href="../css/sign-up.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -24,7 +27,7 @@
     <div class="form-container">
         <h1>Sign Up</h1>
         <div class="form-content">
-            <form action="../Controller/userController.php" method="POST">
+            <form action="../Controller/authController.php" method="POST">
             <input type="hidden" name="action" value="registrar">
                 <div class="form-datos">
                     <label for="txtName">User Name:</label>
@@ -39,6 +42,24 @@
 
         </div>
     </div>
+    <?php
+        if(isset($_SESSION['signIn_error'])){
+            // Eliminar la variable de sesión después de usarla
+            unset($_SESSION['signIn_error']);
+            echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El correo ya está registrado',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: 'red',
+                background: '#000',
+                color: 'white'
+            });
+          </script>";
+        }
+    
+    ?>
 </body>
 
 </html>
