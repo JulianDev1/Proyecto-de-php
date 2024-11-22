@@ -25,6 +25,12 @@ class AuthController
                 case 'login':
                     $this->login();
                     break;
+                case 'editar':
+                    $this->editar();
+                    break;
+                case 'eliminar':
+                    $this->eliminar();
+                    break;
                 default:
                     echo "accion no valida";
                     break;
@@ -87,6 +93,48 @@ class AuthController
             echo "<script>
                 window.location.href = '../layout/signUp.php'</script>";
         }
+    }
+
+    public function editar()
+    {
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $rol = $_POST['rol'];
+
+        $this->userModel->setId($id);
+        $this->userModel->setNombre($nombre);
+        $this->userModel->setCorreo($email);
+        $this->userModel->setRol($rol);
+
+        if ($this->userModel->actualizarUsuario()) {
+            echo "<script>
+                window.location.href = '../adminPage.php' 
+                alert('Usurio actualizado')
+                </script>";
+                return;
+        }
+            echo "<script>
+                    window.location.href = '../layout/adminPage.php'
+                    alert('Error al actualizar usuario')
+                </script>";
+    }
+    public function eliminar(){
+        $id = $_POST['id'];
+        $this->userModel->setId($id);
+        if($this->userModel->eliminarUsuario()){
+            echo "<script>
+                window.location.href = '../adminPage.php'
+                alert('Usuario eliminado')
+                </script>";
+        }else{
+            echo "<script>
+                window.location.href = '../adminPage.php'</script>";
+        }
+
+
+
+
     }
 }
 

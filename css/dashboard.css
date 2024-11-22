@@ -9,7 +9,9 @@ table, th, td {
 
 th, td {
     padding: 10px;
-    text-align: left;
+}
+td{
+    text-align: center;
 }
 
 thead {
@@ -25,8 +27,8 @@ th{
     font-size: larger;
 
 }
-button {
-    background-color: blue;
+button{
+    background-color: red;
     text-align: center;
     width: auto;
     font-size: 3vh;
@@ -36,12 +38,47 @@ button {
     border-radius: 2px;
     font-family: 'Chinese Rocks Rg', sans-serif;
 }
+
 button:hover {
     background: black;
     color: red;
     transition: color 0.4s ease, background 0.4s ease;
     border: red 1px solid;
 }
+
 h1{
     text-align: center;
+    color: white;
+    background-color: red;
+    font-weight: 100;
+}
+input {
+    justify-content: center;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+    background-color: rgb(178, 0, 0);
+
+
+}
+input:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.dashboard-container {
+padding: 0;
+}
+
+#btn-send{
+    margin-left:  10px;
 }

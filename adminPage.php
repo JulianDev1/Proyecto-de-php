@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="shortcut icon" href="layout/images/rdr2-ico.png" type="image/x-icon">
+    
+
 </head>
 
 <body>
@@ -20,8 +22,27 @@
     $usuarios = $userModel->obtenerTodosLosUsuarios();
     ?>
 
+    <h1>Dashboard</h1>
+    <div class="edit-container">
+        <div id="edit-form-container" style="display: none;">
+            <form id="edit-form" action="./Controller/authController.php" method="POST">
+
+                <input type="hidden" name="action" value="editar">
+
+
+                <input type="hidden" name="id" id="edit-id">
+                <label for="edit-nombre">Nombre:</label>
+                <input type="text" name="nombre" id="edit-nombre" required>
+                <label for="edit-email">Correo:</label>
+                <input type="email" name="email" id="edit-email" required>
+                <label for="edit-rol">Rol:</label>
+                <input type="text" name="rol" id="edit-rol" required>
+                <button type="submit" id="btn-send" class="button">Guardar</button>
+            </form>
+        </div>
+
+    </div>
     <div class="dashboard-container">
-        <h1>Dashboard</h1>
         <table>
             <thead>
                 <tr>
@@ -40,8 +61,14 @@
                         <td><?php echo $usuario['email']; ?></td>
                         <td><?php echo $usuario['rol'] == 1 ? 'Admin' : 'Usuario Común'; ?></td>
                         <td>
-                            <button class="nav-container button edit-btn" data-id="<?php echo $usuario['id']; ?>">Editar</button>
-                            <button class="nav-container button delete-btn" data-id="<?php echo $usuario['id']; ?>">Eliminar</button>
+                            <button id="btn-editar" class="edit-btn" data-id="<?php echo $usuario['id']; ?>">Editar</button>
+
+                            <form action="./Controller/authController.php" method="POST" style="display:inline">
+                                <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                                <input type="hidden" name="action" value="eliminar">
+
+                                <button type="submit" btn-eliminar" class="delete-btn" >Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -49,19 +76,6 @@
         </table>
     </div>
 
-    <div id="edit-form-container" style="display: none;">
-        <form id="edit-form" action="./Controller/authController.php" method="POST">
-            <input type="hidden" name="action" value="editar">
-            <input type="hidden" name="id" id="edit-id">
-            <label for="edit-nombre">Nombre:</label>
-            <input type="text" name="nombre" id="edit-nombre" required>
-            <label for="edit-email">Correo:</label>
-            <input type="email" name="email" id="edit-email" required>
-            <label for="edit-rol">Rol:</label>
-            <input type="text" name="rol" id="edit-rol" required>
-            <button type="submit" class="nav-container button">Guardar</button>
-        </form>
-    </div>
 
     <script>
         document.querySelectorAll('.edit-btn').forEach(button => {
@@ -82,14 +96,15 @@
         });
 
         document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', () => {
+            button.closest('form').addEventListener('submit', (event) => {
                 const id = button.getAttribute('data-id');
-                if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-                    window.location.href = `./Controller/authController.php?action=eliminar&id=${id}`;
+                if (!confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+                    event.preventDefault(); // Prevenir el envío del formulario si se cancela la confirmación
                 }
             });
         });
     </script>
+    <link rel="stylesheet" href="css/dashboard.css">
 </body>
 
 </html>
